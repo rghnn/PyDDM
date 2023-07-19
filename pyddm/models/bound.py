@@ -164,4 +164,4 @@ class BoundCollapsingHyperbolic(Bound):
     @accepts(Self, Positive0)
     @returns(Positive0)
     def get_bound(self, t, *args, **kwargs):
-        return 1/(self.tau*t+self.B)
+        return 1/(self.tau*self.t*t+self.B)
