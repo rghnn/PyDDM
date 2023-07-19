@@ -137,7 +137,7 @@ class BoundCollapsingExponential(Bound):
         return self.B * np.exp(-self.tau*t)
         
 @paranoidclass
-Class BoundCollapsingHyperbolic(Bound)
+class BoundCollapsingHyperbolic(Bound)
     """Bound dependence: bound collapses exponentially over time.
 
     Takes two parameters: 
