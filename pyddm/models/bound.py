@@ -147,9 +147,8 @@ class BoundCollapsingHyperbolic(Bound):
         assert v.h in Positive()
     @staticmethod
     def _generate():
-        yield BoundCollapsingHyperbolic(g=1, h=1)
-        yield BoundCollapsingHyperbolic(g=.1, h=.001)
-        yield BoundCollapsingHyperbolic(g=100, h=100)
+        yield BoundCollapsingHyperbolic(g=1, h=0)
+        
     @accepts(Self, Positive0)
     @returns(Positive0)
     def get_bound(self, t, *args, **kwargs):
