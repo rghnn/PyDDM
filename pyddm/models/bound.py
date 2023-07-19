@@ -151,7 +151,7 @@ class BoundCollapsingHyperbolic(Bound):
       | bound = BoundCollapsingExponential(B=1, tau=2.1) # Collapsing with time constant 1/2.1
     """
     name = "collapsing_exponential"
-    required_parameters = ["B", "tau"]
+    required_parameters = ["g", "h"]
     @staticmethod
     def _test(v):
         assert v.B in Positive()
@@ -164,4 +164,4 @@ class BoundCollapsingHyperbolic(Bound):
     @accepts(Self, Positive0)
     @returns(Positive0)
     def get_bound(self, t, *args, **kwargs):
-        return 1/(self.tau*self.t*t+self.B)
+        return 1/(self.h*t+self.g)
