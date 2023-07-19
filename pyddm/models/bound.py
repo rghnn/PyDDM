@@ -138,29 +138,18 @@ class BoundCollapsingExponential(Bound):
         
 @paranoidclass
 class BoundCollapsingHyperbolic(Bound):
-    """Bound dependence: bound collapses exponentially over time.
-
-    Takes two parameters: 
-
-    - `B` - the bound at time t = 0.
-    - `tau` - one divided by the time constant for the collapse.
-      0 gives constant bounds.
-
-    Example usage:
-
-      | bound = BoundCollapsingExponential(B=1, tau=2.1) # Collapsing with time constant 1/2.1
-    """
-    name = "collapsing_exponential"
+    
+    name = "collapsing_hyperbolic"
     required_parameters = ["g", "h"]
     @staticmethod
     def _test(v):
-        assert v.B in Positive()
-        assert v.tau in Positive()
+        assert v.g in Positive()
+        assert v.h in Positive()
     @staticmethod
     def _generate():
-        yield BoundCollapsingExponential(B=1, tau=1)
-        yield BoundCollapsingExponential(B=.1, tau=.001)
-        yield BoundCollapsingExponential(B=100, tau=100)
+        yield BoundCollapsingHyperbolic(g=1, h=1)
+        yield BoundCollapsingHyperbolic(g=.1, h=.001)
+        yield BoundCollapsingHyperbolic(g=100, h=100)
     @accepts(Self, Positive0)
     @returns(Positive0)
     def get_bound(self, t, *args, **kwargs):
